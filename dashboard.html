@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Fusion Finance - Dashboard</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <link rel="stylesheet" href="style.css">
+  <script src="app.js" defer></script>
+</head>
+
+<body>
+  <div class="dashboard-background"></div>
+  <div class="dashboard-blur"></div>
+
+  <div class="overlay">
+    <header class="topbar">
+      <div class="left-nav">
+        <div class="nav-toggle" id="navToggle">☰</div>
+        <div class="brand">Fusion <span>Finance</span></div>
+      </div>
+
+      <nav class="nav" id="mainNav">
+        <a href="dashboard.html" class="navlink active">Dashboard</a>
+        <a href="analysis.html" class="navlink">Analysis</a>
+        <div class="user-profile-nav">
+            <span id="nav-user-name">User</span>
+        </div>
+        <a href="#" class="navlink logout-link" onclick="logout()">Logout</a>
+      </nav>
+    </header>
+
+    <main class="container-full">
+      <section class="glass-card" id="mainCard">
+        <div class="card-header">
+          <div>
+            <h2>Fusion Finance Dashboard</h2>
+            <div class="muted-small">Choose newspapers, upload PDFs, or scan physical news.</div>
+          </div>
+          <div class="market-controls">
+            <button class="market-btn">NIFTY 50</button>
+            <button class="market-btn">SENSEX</button>
+          </div>
+        </div>
+
+        <div class="tiles-row">
+          <article class="tile">
+            <div class="tile-icon">📰</div>
+            <h3>Newspapers</h3>
+            <div class="chips" id="newspaper-chips">
+              <button class="chip" onclick="openNews('hindu')">Hindu</button>
+              <button class="chip" onclick="openNews('et')">Economic Times</button>
+              <button class="chip" onclick="openNews('reuters')">Reuters</button>
+              <button class="chip" onclick="openNews('fe')">Fin. Express</button>
+              <button class="chip" onclick="openNews('mc')">MoneyControl</button>
+            </div>
+          </article>
+
+          <article class="tile">
+            <div class="tile-icon">📸</div>
+            <h3>Scan Paper</h3>
+            
+            <div id="camContainer" style="display: none; flex-direction: column; align-items: center; margin-top: 10px;">
+                <div class="video-box" style="position: relative; width: 100%; border-radius: 15px; overflow: hidden; background: #000; border: 1px solid rgba(255,255,255,0.2);">
+                    <video id="video" autoplay playsinline muted style="width: 100%; height: auto; display: block;"></video>
+                    <div class="scan-overlay"></div>
+                    
+                    <div id="successNotice" style="display:none; position:absolute; top:0; left:0; width:100%; height:100%; background:rgba(0, 242, 254, 0.8); color:#000; flex-direction:column; align-items:center; justify-content:center; z-index:10;">
+                        <span style="font-size: 2rem;">✔</span>
+                        <p style="font-weight:bold;">CAPTURED</p>
+                    </div>
+                </div>
+
+                <button class="btn-primary" onclick="captureAndAnalyze()" style="margin-top: 15px; width: 100%; background: #00f2fe; color: black; border: none; padding: 10px; border-radius: 8px; font-weight: bold; cursor: pointer;">
+                    🚀 CAPTURE PHOTO
+                </button>
+            </div>
+
+            <button id="openBtn" class="btn-secondary" onclick="openCamera()" style="margin-top: 10px; width: 100%; padding: 10px; border-radius: 8px; cursor: pointer; background: rgba(255,255,255,0.1); color: white; border: 1px solid rgba(255,255,255,0.2);">
+                Open Camera
+            </button>
+            
+            <p id="scanInstructions" class="muted-small" style="margin-top:10px;">Snap a photo of physical news</p>
+          </article>
+
+          <article class="tile">
+            <div class="tile-icon">📤</div>
+            <h3>Upload PDFs</h3>
+            <input type="file" id="pdfs" class="file-input" multiple>
+          </article>
+
+          <article class="tile">
+            <div class="tile-icon">🔗</div>
+            <h3>Social Media</h3>
+            <div class="social-grid">
+              <button class="social-btn tw" onclick="openSocial('tw')">Twitter</button>
+              <button class="social-btn st" onclick="openSocial('st')">StockTwits</button>
+              <button class="social-btn ig" onclick="openSocial('ig')">Instagram</button>
+              <button class="social-btn li" onclick="openSocial('li')">LinkedIn</button>
+            </div>
+          </article>
+        </div>
+
+        <div class="action-row" style="margin-top: 30px;">
+          <button class="btn-primary" onclick="generateAnalysis()" style="width: 100%; padding: 15px; font-weight: bold; border-radius: 12px; background: white; color: black; border: none; cursor: pointer;">
+            GENERATE FUSION ANALYSIS
+          </button>
+        </div>
+      </section>
+    </main>
+  </div>
+</body>
+</html>

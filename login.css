@@ -1,0 +1,112 @@
+/* Background stock market theme */
+.login-bg {
+  position: fixed;
+  top:0; left:0;
+  width:100%; height:100%;
+  background: url("https://images.unsplash.com/photo-1569025690938-a00729c9e1f9?auto=format&fit=crop&w=1500&q=90")
+    center/cover no-repeat;
+  filter: brightness(0.55);
+}
+
+/* Wrapper to center card */
+.login-wrapper {
+  height: 100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  padding:20px;
+}
+
+/* Glass Login Card */
+.login-card {
+  width: 380px;
+  padding: 28px;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.16);
+  backdrop-filter: blur(14px);
+  box-shadow: 0 0 28px rgba(0,0,0,0.35);
+  text-align: center;
+  animation: fadeIn 1s ease;
+}
+
+.logo {
+  font-size: 32px;
+  font-weight: 800;
+  color: #fff;
+}
+.logo span {
+  color: #4ad4ff;
+}
+
+.tagline {
+  margin-top: -4px;
+  color: #d7f4ff;
+  font-size: 14px;
+  margin-bottom: 18px;
+}
+
+/* Inputs */
+.input {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 14px;
+  border:none;
+  border-radius: 12px;
+  font-size: 15px;
+  outline:none;
+  color:white;
+  background: rgba(255,255,255,0.25);
+}
+.input::placeholder {
+  color: #e7e7e7;
+}
+
+/* Buttons */
+.login-btn {
+  width:100%;
+  padding:12px;
+  border:none;
+  border-radius:12px;
+  background:#24c4ff;
+  font-size:16px;
+  font-weight:700;
+  cursor:pointer;
+  transition:0.3s;
+}
+.login-btn:hover {
+  background:#1badde;
+}
+
+.google-btn {
+  margin-top:10px;
+  width:100%;
+  padding:11px;
+  border:none;
+  background:white;
+  font-weight:600;
+  border-radius:12px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:10px;
+  cursor:pointer;
+}
+.google-btn img {
+  width:20px;
+}
+
+/* Form Switch */
+.switch-text {
+  margin-top:14px;
+  font-size:13px;
+  color:white;
+}
+.switch-text a {
+  color:#4ad4ff;
+}
+
+/* Animation */
+@keyframes fadeIn {
+  from { opacity:0; transform:translateY(20px); }
+  to { opacity:1; transform:translateY(0); }
+}

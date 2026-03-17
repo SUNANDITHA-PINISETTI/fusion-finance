@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Fusion Finance - StockTwits</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="analysis.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <div class="overlay">
+    <header class="topbar">
+      <div class="brand">Fusion <span>Finance</span></div>
+      <nav class="nav">
+        <a href="dashboard.html" class="navlink">Dashboard</a>
+        <a href="analysis.html" class="navlink">Analysis</a>
+        <a href="twitter.html" class="navlink">Twitter</a>
+        <a href="instagram.html" class="navlink">Instagram</a>
+        <a href="stocktwits.html" class="navlink">StockTwits</a>
+      </nav>
+    </header>
+    <main class="container-full">
+      <section class="glass-card">
+        <h2>StockTwits Sentiment</h2>
+        <div class="muted-small">Mock sentiment for trending tickers</div>
+        <div class="news-card" style="text-align:center; width:200px; margin-top:18px;">
+          <canvas id="st-chart" class="small-chart"></canvas>
+        </div>
+        <h3 style="margin-top:18px;">Trending Tickers</h3>
+        <ul class="timeline muted-small">
+          <li>$RELIANCE – trending bullish</li>
+          <li>$TCS – heavy discussion</li>
+        </ul>
+      </section>
+    </main>
+  </div>
+
+<script>
+new Chart(document.getElementById('st-chart'), {
+  type: 'doughnut',
+  data: { labels: ['Pos','Neu','Neg'], datasets: [{ data: [60,20,20], backgroundColor:['#10B981','#94A3B8','#F43F5E'] }] },
+  options: { plugins:{legend:{display:false}}, maintainAspectRatio:false }
+});
+</script>
+</body>
+</html>

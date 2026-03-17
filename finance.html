@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Fusion Finance — Login</title>
+  <link rel="stylesheet" href="login.css">
+  <script src="https://accounts.google.com/gsi/client" async defer></script>
+  <script src="app.js" defer></script>
+</head>
+
+<body>  
+  <div class="login-bg"></div>
+
+  <div class="login-wrapper">
+    <div class="login-card">
+      <h2 class="logo">Fusion <span>Finance</span></h2>
+      <p class="tagline">Your smart finance & analysis hub</p>
+
+      <div id="login-form">
+        <input id="login-email" class="input" type="email" placeholder="Email">
+        <input id="login-password" class="input" type="password" placeholder="Password">
+
+        <button class="login-btn">Login</button>
+
+        <div style="margin: 15px 0; display: flex; justify-content: center;">
+          <div id="g_id_onload"
+               data-client_id="971626613460-m32a68jfrcv4d0hdiacs4ufqpoj3qaju.apps.googleusercontent.com"
+               data-context="signin"
+               data-ux_mode="popup"
+               data-callback="handleCredentialResponse"
+               data-auto_prompt="false">
+          </div>
+
+          <div class="g_id_signin"
+               data-type="standard"
+               data-shape="rectangular"
+               data-theme="outline"
+               data-text="signin_with"
+               data-size="large"
+               data-logo_alignment="left">
+          </div>
+        </div>
+
+        <p class="switch-text">
+          Don't have an account? <a href="#" onclick="showSignup()">Sign up</a>
+        </p>
+      </div>
+
+      <div id="signup-form" style="display:none">
+        <input id="signup-name" class="input" placeholder="Full Name">
+        <input id="signup-email" class="input" type="email" placeholder="Email">
+        <input id="signup-password" class="input" type="password" placeholder="Password">
+        <button class="login-btn">Create Account</button>
+        <p class="switch-text">
+          Already have an account? <a href="#" onclick="showLogin()">Login</a>
+        </p>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Fusion AI | Real-Time Engine</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="overlay">
+        <header class="topbar">
+            <div class="brand">Fusion <span>Engine</span></div>
+            <button class="market-btn" onclick="location.href='dashboard.html'">Back</button>
+        </header>
+
+        <main class="container-full">
+            <div class="analysis-grid">
+                <section class="glass-card stock-explorer">
+                    <div class="explorer-header">
+                        <h3>Live Market Pulse</h3>
+                        <div class="selectors">
+                            <select id="index-select" class="chip" onchange="loadCompanies()">
+                                <option value="nifty">NIFTY 50</option>
+                                <option value="sensex">SENSEX 30</option>
+                            </select>
+                            <select id="company-select" class="chip" onchange="fetchRealTimeData()"></select>
+                            <button class="btn btn-primary" onclick="fetchRealTimeData()">Analyze Live</button>
+                        </div>
+                    </div>
+
+                    <div class="live-badge" style="margin-top: 15px; display: flex; align-items: baseline;">
+                        <span id="current-price" style="font-size: 2.5rem; font-weight: bold;">₹---</span> 
+                        <span id="price-change" style="font-size: 1.2rem; margin-left: 10px;"></span>
+                    </div>
+
+                    <div class="chart-container" style="height: 350px; background: rgba(255,255,255,0.4); border-radius: 15px; padding: 10px; margin-top: 20px;">
+                        <canvas id="priceChart"></canvas>
+                    </div>
+                </section>
+            </div>
+        </main>
+    </div>
+
+    <script src="analysis.js"></script>
+</body>
+</html>

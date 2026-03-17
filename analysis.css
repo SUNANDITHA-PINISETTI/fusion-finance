@@ -1,0 +1,219 @@
+/* ========================================================= */
+/* ===============  GLOBAL BACKGROUND STYLE  =============== */
+/* ========================================================= */
+
+/* Background stock image */
+body {
+  background-image: url('https://images.unsplash.com/photo-1569025690938-a00729c9e1f9?auto=format&fit=crop&w=1500&q=90');
+  background-size: cover;
+  background-attachment: fixed;
+  background-position: center;
+}
+
+/* Transparent overlay for readability */
+.overlay {
+  background: rgba(255, 255, 255, 0.72);
+  backdrop-filter: blur(6px);
+  min-height: 100vh;
+}
+
+
+/* ========================================================= */
+/* ======================= GLASS CARD ======================= */
+/* ========================================================= */
+
+.glass-card {
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.78);
+  padding: 24px;
+  backdrop-filter: blur(12px);
+  box-shadow: 0 10px 35px rgba(0,0,0,0.18);
+}
+
+
+/* ========================================================= */
+/* ==================== NEWSPAPER CARDS ===================== */
+/* ========================================================= */
+
+.news-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 18px;
+}
+
+.news-card {
+  padding: 16px;
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 16px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+  backdrop-filter: blur(4px);
+}
+
+
+/* ========================================================= */
+/* ===================== SOCIAL CARDS ======================= */
+/* ========================================================= */
+
+.social-row {
+  display: flex;
+  gap: 18px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+/* Chart size */
+.small-chart {
+  width: 180px !important;
+  height: 120px !important;
+}
+
+
+/* ========================================================= */
+/* ===================== SIDE CARDS ========================= */
+/* ========================================================= */
+
+.side-by-side {
+  display: flex;
+  gap: 22px;
+  flex-wrap: wrap;
+}
+
+.side-card {
+  flex: 1;
+  min-width: 260px;
+}
+
+
+/* ========================================================= */
+/* ===================== DASHBOARD DECOR ==================== */
+/* ========================================================= */
+
+/* Dashboard stock banner */
+.dashboard-banner {
+  width: 100%;
+  height: 200px;
+  border-radius: 22px;
+  background-image: url("https://images.unsplash.com/photo-1549421263-5ec394a94a0a?auto=format&fit=crop&w=1500&q=90");
+  background-size: cover;
+  background-position: center;
+  box-shadow: 0 12px 40px rgba(0,0,0,0.2);
+  margin-bottom: 28px;
+}
+
+/* Title with icon */
+.section-title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 22px;
+  font-weight: 700;
+}
+
+.section-title img {
+  width: 26px;
+  height: 26px;
+}
+
+
+/* ========================================================= */
+/* ================= NEWSPAPER CHIP ICONS =================== */
+/* ========================================================= */
+
+.chip {
+  position: relative;
+  padding-left: 38px !important;
+}
+
+.chip::before {
+  content: "";
+  width: 22px;
+  height: 22px;
+  position: absolute;
+  left: 10px;
+  top: 8px;
+  background-size: cover;
+  background-position: center;
+}
+
+.chip[data-name="Hindu"]::before {
+  background-image: url("https://cdn-icons-png.flaticon.com/512/2965/2965879.png");
+}
+.chip[data-name="Financial Express"]::before {
+  background-image: url("https://cdn-icons-png.flaticon.com/512/841/841364.png");
+}
+.chip[data-name="Economic Times"]::before {
+  background-image: url("https://cdn-icons-png.flaticon.com/512/3135/3135679.png");
+}
+.chip[data-name="Reuters"]::before {
+  background-image: url("https://cdn-icons-png.flaticon.com/512/5969/5969025.png");
+}
+.chip[data-name="MoneyControl"]::before {
+  background-image: url("https://cdn-icons-png.flaticon.com/512/4341/4341060.png");
+}
+
+
+/* ========================================================= */
+/* ================ SOCIAL BUTTONS DECORATION =============== */
+/* ========================================================= */
+
+.social-btn {
+  position: relative;
+  padding-left: 42px !important;
+}
+
+.social-btn::before {
+  content: "";
+  width: 22px;
+  height: 22px;
+  position: absolute;
+  left: 12px;
+  top: 10px;
+  background-size: cover;
+}
+
+.social-btn[data-social="twitter"]::before {
+  background-image: url("https://cdn-icons-png.flaticon.com/512/733/733579.png");
+}
+
+.social-btn[data-social="instagram"]::before {
+  background-image: url("https://cdn-icons-png.flaticon.com/512/2111/2111463.png");
+}
+
+.social-btn[data-social="stocktwits"]::before {
+  background-image: url("https://seeklogo.com/images/S/stocktwits-logo-461D0A938A-seeklogo.com.png");
+}
+
+.selected-social {
+  background: #22c55e !important;
+  color: white !important;
+  box-shadow: 0 6px 18px rgba(34, 197, 94, 0.35);
+}
+
+
+/* ========================================================= */
+/* ===================== MARKETS BUTTONS ==================== */
+/* ========================================================= */
+
+.market-btn {
+  background: linear-gradient(135deg, #2563eb, #4f46e5);
+  color: white;
+  font-weight: 700;
+  border-radius: 12px;
+  padding: 12px 22px;
+  box-shadow: 0 6px 20px rgba(37, 99, 235, 0.25);
+}
+
+.market-btn:hover {
+  background: linear-gradient(135deg, #1d4ed8, #4338ca);
+}
+
+
+/* ========================================================= */
+/* ==================== SECTION DIVIDER ===================== */
+/* ========================================================= */
+
+.section-divider {
+  height: 1px;
+  background: rgba(0,0,0,0.13);
+  margin: 18px 0;
+}

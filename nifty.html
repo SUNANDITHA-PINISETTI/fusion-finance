@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>NIFTY 50 - Fusion Finance</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="topbar">
+  <div class="brand">Fusion <span>Finance</span></div>
+  <nav class="nav">
+    <a href="dashboard.html" class="navlink">Dashboard</a>
+    <a href="analysis.html" class="navlink">Total Analysis</a>
+    <a href="twitter.html" class="navlink">Twitter</a>
+    <a href="instagram.html" class="navlink">Instagram</a>
+    <a href="stocktwits.html" class="navlink">StockTwits</a>
+  </nav>
+</header>
+
+<main class="container-single">
+  <section class="card">
+    <div class="table-legend">
+      <h2>NIFTY 50 — Live Prices</h2>
+      <div><button class="btn ghost" onclick="location.href='dashboard.html'">Back</button></div>
+    </div>
+
+    <table class="stock-table">
+      <thead>
+        <tr><th>#</th><th>Company</th><th>Symbol</th><th>Price (₹)</th><th>Change %</th></tr>
+      </thead>
+      <tbody id="nifty-table-body"></tbody>
+    </table>
+  </section>
+</main>
+
+<script>
+const API_KEY = "vGB2q8IoZpoONcoutgwSYAd2RcALemb7";
+
+const NIFTY = [
+  ["TCS","TCS.NS"],["Infosys","INFY.NS"],["HDFC Bank","HDFCBANK.NS"],
+  ["ICICI Bank","ICICIBANK.NS"],["Reliance","RELIANCE.NS"],["HUL","HINDUNILVR.NS"],
+  ["Kotak Bank","KOTAKBANK.NS"],["L&T","LT.NS"],["ITC","ITC.NS"],["SBI","SBIN.NS"],
+  ["Axis Bank","AXISBANK.NS"],["Bajaj Finance","BAJFINANCE.NS"],["Bharti Airtel","BHARTIARTL.NS"],
+  ["HCL Tech","HCLTECH.NS"],["Maruti Suzuki","MARUTI.NS"],["Wipro","WIPRO.NS"],
+  ["Divis Labs","DIVISLAB.NS"],["UltraTech Cement","ULTRACEMCO.NS"],["ONGC","ONGC.NS"],["Power Grid","POWERGRID.NS"],
+  ["Titan","TITAN.NS"],["Britannia","BRITANNIA.NS"],["NTPC","NTPC.NS"],["Eicher Motors","EICHERMOT.NS"],
+  ["Sun Pharma","SUNPHARMA.NS"],["JSW Steel","JSWSTEEL.NS"],["Tech Mahindra","TECHM.NS"],["Adani Ent","ADANIENT.NS"],
+  ["BPCL","BPCL.NS"],["Grasim","GRASIM.NS"],["Coal India","COALINDIA.NS"],["Bajaj Auto","BAJAJ-AUTO.NS"],
+  ["HDFC Life","HDFCLIFE.NS"],["Zomato","ZOMATO.NS"],["Adani Ports","ADANIPORTS.NS"],["Tata Steel","TATASTEEL.NS"],
+  ["M&M","M&M.NS"],["SBI Life","SBILIFE.NS"],["Hindalco","HINDALCO.NS"],["Cipla","CIPLA.NS"],
+  ["Shree Cement","SHREECEM.NS"],["IndusInd Bank","INDUSINDBK.NS"],["LIC Housing","LICHSGFIN.NS"],["Havells","HAVELLS.NS"],
+  ["Page Ind","PAGEIND.NS"],["UBL","UBL.NS"],["Adani Trans","ADANITRANS.NS"]
+];
+
+async function fetchBatch(symbols){
+  const list = symbols.join(',');
+  const url = `https://financialmodelingprep.com/api/v3/quote/${list}?apikey=${API_KEY}`;
+  const r = await fetch(url);
+  return r.ok ? r.json() : [];
+}
+
+async function loadNifty(){
+  const body = document.getElementById('nifty-table-body');
+  body.innerHTML = '<tr><td colspan="5">Loading...</td></tr>';
+
+  // chunking to avoid long URL issues
+  const chunkSize = 20;
+  let resultsMap = {};
+  for(let i=0;i<NIFTY.length;i+=chunkSize){
+    const chunk = NIFTY.slice(i,i+chunkSize).map(x=>x[1]);
+    const data = await fetchBatch(chunk);
+    if(Array.isArray(data)){
+      data.forEach(item => { if(item && item.symbol) resultsMap[item.symbol] = item; });
+    }
+  }
+
+  body.innerHTML = '';
+  NIFTY.forEach((c, idx)=>{
+    const sym = c[1];
+    const info = resultsMap[sym] || {};
+    const price = info.price !== undefined ? info.price.toFixed(2) : 'N/A';
+    const change = info.changesPercentage !== undefined ? info.changesPercentage.toFixed(2) : 'N/A';
+    const color = (info.changesPercentage||0) >= 0 ? 'style="color:#059669"' : 'style="color:#dc2626"';
+    const row = `<tr>
+      <td>${idx+1}</td>
+      <td>${c[0]}</td>
+      <td>${sym}</td>
+      <td>${price}</td>
+      <td ${color}>${change === 'N/A' ? change : change + '%'}</td>
+    </tr>`;
+    body.innerHTML += row;
+  });
+}
+
+loadNifty();
+</script>
+
+<script src="app.js"></script>
+</body>
+</html>
